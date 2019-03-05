@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 	{
 		checkXIMEAErrors(xiOpenDevice(i, &hcams[i]));
 		checkXIMEAErrors(xiSetParamInt(hcams[i], XI_PRM_BUFFERS_QUEUE_SIZE, 3));
-		checkXIMEAErrors(xiSetParamInt(hcams[i], XI_PRM_EXPOSURE, 50000));
+		checkXIMEAErrors(xiSetParamInt(hcams[i], XI_PRM_EXPOSURE, 30000));
 	}
 
 	printf("Camera Opened\n");
@@ -55,13 +55,13 @@ int main(int argc, char* argv[])
 	xiSetParamInt(hcams[0], XI_PRM_GPO_MODE, XI_GPO_HIGH_IMPEDANCE);
 	xiSetParamInt(hcams[0], XI_PRM_GPI_SELECTOR, 2);
 	xiSetParamInt(hcams[0], XI_PRM_GPI_MODE, XI_GPI_TRIGGER);
-	xiSetParamInt(hcams[0], XI_PRM_TRG_SOURCE, XI_TRG_EDGE_RISING);
+	xiSetParamInt(hcams[0], XI_PRM_TRG_SOURCE, XI_TRG_EDGE_FALLING);
 															
 	xiSetParamInt(hcams[1], XI_PRM_GPO_SELECTOR, 2);// set trigger mode on camera2 - as slave
 	xiSetParamInt(hcams[1], XI_PRM_GPO_MODE, XI_GPO_HIGH_IMPEDANCE);
 	xiSetParamInt(hcams[1], XI_PRM_GPI_SELECTOR, 2);
 	xiSetParamInt(hcams[1], XI_PRM_GPI_MODE, XI_GPI_TRIGGER);
-	xiSetParamInt(hcams[1], XI_PRM_TRG_SOURCE, XI_TRG_EDGE_RISING);
+	xiSetParamInt(hcams[1], XI_PRM_TRG_SOURCE, XI_TRG_EDGE_FALLING);
 	// start
 	xiStartAcquisition(hcams[0]);
 	xiStartAcquisition(hcams[1]);
